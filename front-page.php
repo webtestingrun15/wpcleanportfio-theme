@@ -17,8 +17,13 @@
                 ]; //check codex for wp_login_form for args
                 wp_login_form($args);
               ?>
-            <?php wp_register( '<button class="button button-primary">' ,'</button>' ); ?>
+
         <?php } ?>
+        <?php wp_register( '<button class="button button-primary">' ,'</button>' ); ?>
+
+        <a href="<?php echo esc_url( wp_lostpassword_url( get_home_url() ) ); ?>" alt="<?php esc_attr_e( 'Lost Password', 'textdomain' ); ?>">
+            <?php esc_html_e( 'Lost Password', 'textdomain' ); ?>
+        </a>
 
       <?php endwhile; else : ?>
 
