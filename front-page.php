@@ -6,14 +6,18 @@
 
       <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-
         <?php if ( is_user_logged_in() ) { ?>
-            <a href="<?php echo wp_logout_url(); ?>">Logout</a>
+          <a href="<?php echo wp_logout_url(); ?>">Logout</a>
             <?php get_template_part( 'template-parts/content', 'page' ) ?>
-        <?php } else { ?>
-          <a href="/wp-login.php" title="Members Area Login" rel="home">Members Area</a>
-          <br>
-          <?php wp_register( '<p>' ,'<p>' ); ?>
+          <?php } else { ?>
+              <?php
+                $args = [
+                  'label_username' => 'Enter your username',
+                  'label_password' => 'Enter your password'
+                ]; //check codex for wp_login_form for args
+                wp_login_form($args);
+              ?>
+            <?php wp_register( '<button class="button button-primary">' ,'</button>' ); ?>
         <?php } ?>
 
       <?php endwhile; else : ?>
